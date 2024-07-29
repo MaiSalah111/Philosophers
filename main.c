@@ -50,7 +50,8 @@ int	main(int argc, char **argv)
 	memset(&args, 0, sizeof(t_args));
 	if (argc < 5 || argc > 6
 		|| !ft_initialize_args(&args, argv))
-		return (1);
+		return(write(2, "Error: Invalid number arguments\n", 30), 1);
+		// return (1);
 	ft_initialize_philos(&args);
 	i = -1;
 	while (++i < args.philo_count)
