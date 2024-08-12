@@ -29,7 +29,7 @@ bool	ft_break_while(t_args *args, int *i)
 		{
 			args->death_occured = true;
 			pthread_mutex_unlock(&args->philos[*i].l_fork);
-			printf("%llu %d died\n",
+			printf("%lu %d died\n",
 				ft_now_ms() - args->start_time, args->philos[*i].nbr);
 		}
 		pthread_mutex_unlock(&args->sync_mutex);
@@ -50,8 +50,7 @@ int	main(int argc, char **argv)
 	memset(&args, 0, sizeof(t_args));
 	if (argc < 5 || argc > 6
 		|| !ft_initialize_args(&args, argv))
-		return(write(2, "Error: Invalid number arguments\n", 30), 1);
-		// return (1);
+		return (1);
 	ft_initialize_philos(&args);
 	i = -1;
 	while (++i < args.philo_count)
@@ -70,3 +69,4 @@ int	main(int argc, char **argv)
 		pthread_mutex_destroy(&args.philos[i].l_fork);
 	return (0);
 }
+

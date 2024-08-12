@@ -20,7 +20,7 @@ bool	ft_write_status(t_philo *philo, char *msg)
 		pthread_mutex_unlock(&philo->args->sync_mutex);
 		return (false);
 	}
-	printf("%llu %d %s\n", ft_now_ms() - philo->args->start_time,
+	printf("%lu %d %s\n", ft_now_ms() - philo->args->start_time,
 		philo->nbr, msg);
 	pthread_mutex_unlock(&philo->args->sync_mutex);
 	return (true);

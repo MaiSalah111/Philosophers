@@ -22,6 +22,8 @@
 # include <sys/time.h>
 # include <unistd.h>
 
+#define MAX_PHILOSOPHERS 200
+
 typedef struct s_philo {
 	int				nbr;
 	uint64_t		last_meal_beginning;
@@ -43,8 +45,9 @@ typedef struct s_args {
 	bool				everybody_full;
 	uint64_t			start_time;
 	pthread_mutex_t		sync_mutex;
-	struct s_philo		philos[200];
-}	t_args;
+	struct s_philo		philos[MAX_PHILOSOPHERS];
+	// struct s_philo		philos[200];
+	}	t_args;
 
 enum e_fork
 {

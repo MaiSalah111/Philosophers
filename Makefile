@@ -5,15 +5,14 @@ CFLAGS := -Wall -Werror -Wextra -g
 
 SRCS := main.c \
 		init.c \
+		time_utils.c \
 		philo_utils.c \
 		libft_utils/ft_atoi.c \
 		libft_utils/ft_calloc.c \
 		libft_utils/ft_isdigit.c \
 		libft_utils/ft_isint.c \
-		libft_utils/ft_now_ms.c \
 		libft_utils/ft_strlen.c \
-		libft_utils/ft_usleep.c \
-		# philo_utils/philo_utils2.c 
+		
 
 OBJS := $(SRCS:.c=.o)
 
