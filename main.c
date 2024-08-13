@@ -6,7 +6,7 @@
 /*   By: maiahmed <maiahmed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:09 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/07/09 10:44:51 by maiahmed         ###   ########.fr       */
+/*   Updated: 2024/08/13 18:15:17 by maiahmed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,19 @@ bool	ft_break_while(t_args *args, int *i)
 {
 	pthread_mutex_lock(&args->sync_mutex);
 	if (ft_now_ms() - args->philos[*i].last_meal_beginning
-		>= (unsigned long long)args->time2die
+		>= (time_t)args->time2die
 		|| args->total_finished == args->philo_count)
 	{
 		if (args->max_meals != -1 && args->total_finished == args->philo_count)
 		{
 			args->everybody_full = true;
-			pthread_mutex_unlock(&args->philos[*i].l_fork);
-			printf("Every philosopher has eaten %d times\n", args->max_meals);
+			printf("Every philosopher had a minimum of %d times\n",
+				args->max_meals);
 		}
 		else
 		{
 			args->death_occured = true;
-			pthread_mutex_unlock(&args->philos[*i].l_fork);
-			printf("%lu %d died\n",
+			printf("%ld %d died\n",
 				ft_now_ms() - args->start_time, args->philos[*i].nbr);
 		}
 		pthread_mutex_unlock(&args->sync_mutex);
@@ -63,10 +62,6 @@ int	main(int argc, char **argv)
 		pthread_join(args.philos[i].thread, NULL);
 	i = -1;
 	while (++i < args.philo_count)
-		pthread_detach(args.philos[i].thread);
-	i = -1;
-	while (++i < args.philo_count)
 		pthread_mutex_destroy(&args.philos[i].l_fork);
 	return (0);
 }
-

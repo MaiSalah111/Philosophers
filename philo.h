@@ -6,7 +6,7 @@
 /*   By: maiahmed <maiahmed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:21 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/07/09 10:44:26 by maiahmed         ###   ########.fr       */
+/*   Updated: 2024/08/13 18:23:54 by maiahmed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-#define MAX_PHILOSOPHERS 200
+# define MAX_PHILOSOPHERS 200
 
-typedef struct s_philo {
+typedef struct s_philo
+{
 	int				nbr;
-	uint64_t		last_meal_beginning;
+	time_t			last_meal_beginning;
 	int				meals_count;
 	pthread_t		thread;
 	pthread_mutex_t	l_fork;
@@ -34,7 +35,8 @@ typedef struct s_philo {
 	struct s_args	*args;
 }	t_philo;
 
-typedef struct s_args {
+typedef struct s_args
+{
 	int					philo_count;
 	int					time2die;
 	int					time2eat;
@@ -43,11 +45,10 @@ typedef struct s_args {
 	int					total_finished;
 	bool				death_occured;
 	bool				everybody_full;
-	uint64_t			start_time;
+	time_t				start_time;
 	pthread_mutex_t		sync_mutex;
 	struct s_philo		philos[MAX_PHILOSOPHERS];
-	// struct s_philo		philos[200];
-	}	t_args;
+}	t_args;
 
 enum e_fork
 {
@@ -59,16 +60,19 @@ int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 int			ft_isdigit(int c);
 bool		ft_isint(char *str);
-uint64_t	ft_now_ms(void);
+time_t		ft_now_ms(void);
 size_t		ft_strlen(const char *str);
-void		ft_usleep(uint64_t milli);
+// void		ft_usleep(time_t milli);
+void		ft_usleep(time_t milli, t_philo *philo);
 bool		ft_initialize_args(t_args *args, char **argv);
 void		ft_initialize_philos(t_args *args);
 bool		ft_break_while(t_args *args, int *i);
 bool		ft_write_status(t_philo *philo, char *msg);
 bool		ft_should_stop(t_philo *philo);
 bool		ft_get_forks(t_philo *philo);
+void		ft_eat(t_philo *philo);
 bool		ft_sleep_think(t_philo *philo);
+void		ft_release_forks(t_philo *philo);
 void		*proutine(void	*data);
 
 #endif
