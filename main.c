@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:09 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/14 10:11:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/14 13:33:40 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ bool	ft_break_while(t_args *args, int *i)
 	{
 		if (args->max_meals != -1 && args->total_finished == args->philo_count)
 		{
-			args->everybody_full = true;
+			args->all_full = true;
 			printf("Every philosopher had a minimum of %d times\n",
 				args->max_meals);
 		}
 		else
 		{
-			args->death_occured = true;
+			args->someone_died = true;
 			printf("%ld %d died\n",
 				ft_now_ms() - args->start_time, args->philos[*i].nbr);
 		}
@@ -54,8 +54,16 @@ int	main(int argc, char **argv)
 	while (++i < args.philo_count)
 		pthread_create(&args.philos[i].thread, NULL, ph_routine, &args.philos[i]);
 	i = -1;
-	while (++i < args.philo_count && !ft_break_while(&args, &i))
-		i = i + 0;
+	if(args.philo_count > 1)
+	{
+		while (++i < args.philo_count && !ft_break_while(&args, &i))
+		{
+			usleep(1);
+			i = i + 0;
+		}
+	}
+	// while (++i < args.philo_count && !ft_break_while(&args, &i))
+	// 	i = i + 0;
 	i = -1;
 	while (++i < args.philo_count)
 		pthread_join(args.philos[i].thread, NULL);

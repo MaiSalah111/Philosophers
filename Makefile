@@ -3,7 +3,7 @@ NAME := philo
 CC := cc
 CFLAGS := -Wall -Werror -Wextra -g
 
-SRCS := main.c init_args.c init_philos.c time_utils.c ph_utils.c helpers/ft_atoi.c helpers/ft_isdigit.c helpers/ft_isint.c helpers/ft_strlen.c 		
+SRCS := main.c intialization.c time_utils.c ph_forks.c ph_status.c ph_routine.c helpers.c error_handler.c
 
 OBJS := $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:21 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/14 13:01:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/14 15:23:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-# define MAX_PHILOSOPHERS 200
+# define PHILO_MAX 200
 
 typedef struct s_philo
 {
@@ -43,11 +43,11 @@ typedef struct s_args
 	int					time2sleep;
 	int					max_meals;
 	int					total_finished;
-	bool				death_occured;
-	bool				everybody_full;
+	bool				someone_died;
+	bool				all_full;
 	time_t				start_time;
 	pthread_mutex_t		sync_mutex;
-	struct s_philo		philos[MAX_PHILOSOPHERS];
+	struct s_philo		philos[PHILO_MAX];
 }	t_args;
 
 enum e_fork
@@ -59,6 +59,7 @@ enum e_fork
 int			ft_atoi(const char *str);
 int			ft_isdigit(int c);
 bool		ft_isint(char *str);
+bool		error_handler(char **argv);
 time_t		ft_now_ms(void);
 size_t		ft_strlen(const char *str);
 void		ft_usleep(time_t milli, t_philo *philo);
@@ -66,7 +67,7 @@ bool		ft_initialize_args(t_args *args, char **argv);
 void		ft_initialize_philos(t_args *args);
 bool		ft_break_while(t_args *args, int *i);
 bool		ft_write_status(t_philo *philo, char *msg);
-bool		ft_should_stop(t_philo *philo);
+bool		should_stop(t_philo *philo);
 bool		pick_forks(t_philo *philo);
 void		ft_eat(t_philo *philo);
 bool		sleep_then_think(t_philo *philo);

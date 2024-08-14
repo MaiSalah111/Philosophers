@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:49:46 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/14 10:16:22 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/14 15:23:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_usleep(time_t milli, t_philo *philo)
 	elapsed = ft_now_ms();
 	while (elapsed - now < milli)
 	{
-		if (ft_should_stop(philo))
+		if (should_stop(philo))
 			return ;
 		usleep(300);
 		elapsed = ft_now_ms();
