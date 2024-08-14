@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*   ph_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:17 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/14 10:16:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/14 13:02:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->args->sync_mutex);
 
 	ft_usleep(philo->args->time2eat, philo);
-	ft_release_forks(philo);
+	release_forks(philo);
 }
 
 bool	sleep_then_think(t_philo *philo)
@@ -106,7 +106,7 @@ bool	sleep_then_think(t_philo *philo)
 	return (true);
 }
 
-void	ft_release_forks(t_philo *philo)
+void	release_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(&philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);

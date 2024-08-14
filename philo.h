@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:21 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/14 10:15:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/14 13:01:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ bool		ft_should_stop(t_philo *philo);
 bool		pick_forks(t_philo *philo);
 void		ft_eat(t_philo *philo);
 bool		sleep_then_think(t_philo *philo);
-void		ft_release_forks(t_philo *philo);
+void		release_forks(t_philo *philo);
 void		*ph_routine(void	*data);
 
 #endif
