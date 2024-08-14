@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_utils.c                                       :+:      :+:    :+:   */
+/*   ft_isint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 11:49:46 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/14 10:16:22 by codespace        ###   ########.fr       */
+/*   Created: 2024/08/13 15:40:38 by maiahmed          #+#    #+#             */
+/*   Updated: 2024/08/14 08:12:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-time_t	ft_now_ms(void)
+bool	ft_isint(char *str)
 {
-	struct timeval	tv;
+	char	*max_int;
+	size_t	str_len;
 
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000ULL + tv.tv_usec / 1000ULL);
-}
-
-void	ft_usleep(time_t milli, t_philo *philo)
-{
-	time_t	now;
-	time_t	elapsed;
-
-	now = ft_now_ms();
-	elapsed = ft_now_ms();
-	while (elapsed - now < milli)
-	{
-		if (ft_should_stop(philo))
-			return ;
-		usleep(300);
-		elapsed = ft_now_ms();
-	}
+	max_int = "2147483647";
+	if (*str == '+')
+		str++;
+	str_len = ft_strlen(str);
+	if (str_len > 10)
+		return (false);
+	if (str_len == 10)
+		while (ft_isdigit(*str) && *str <= *max_int++)
+			str++;
+	else
+		while (ft_isdigit(*str))
+			str++;
+	return (!*str && true);
 }

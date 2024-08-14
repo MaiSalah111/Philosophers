@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_utils.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 11:49:46 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/14 10:16:22 by codespace        ###   ########.fr       */
+/*   Created: 2024/08/13 15:40:43 by maiahmed          #+#    #+#             */
+/*   Updated: 2024/08/14 08:13:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-time_t	ft_now_ms(void)
+size_t	ft_strlen(const char *str)
 {
-	struct timeval	tv;
+	size_t	i;
 
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000ULL + tv.tv_usec / 1000ULL);
-}
-
-void	ft_usleep(time_t milli, t_philo *philo)
-{
-	time_t	now;
-	time_t	elapsed;
-
-	now = ft_now_ms();
-	elapsed = ft_now_ms();
-	while (elapsed - now < milli)
-	{
-		if (ft_should_stop(philo))
-			return ;
-		usleep(300);
-		elapsed = ft_now_ms();
-	}
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

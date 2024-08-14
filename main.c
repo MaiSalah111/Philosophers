@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maiahmed <maiahmed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:09 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/13 18:15:17 by maiahmed         ###   ########.fr       */
+/*   Updated: 2024/08/14 10:11:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ bool	ft_break_while(t_args *args, int *i)
 	return (false);
 }
 
-// philo_count time2die time2eat time2sleep [meals_count]
 int	main(int argc, char **argv)
 {
 	t_args		args;
@@ -53,7 +52,7 @@ int	main(int argc, char **argv)
 	ft_initialize_philos(&args);
 	i = -1;
 	while (++i < args.philo_count)
-		pthread_create(&args.philos[i].thread, NULL, proutine, &args.philos[i]);
+		pthread_create(&args.philos[i].thread, NULL, ph_routine, &args.philos[i]);
 	i = -1;
 	while (++i < args.philo_count && !ft_break_while(&args, &i))
 		i = i + 0;

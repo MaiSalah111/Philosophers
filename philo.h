@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maiahmed <maiahmed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:21 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/13 18:23:54 by maiahmed         ###   ########.fr       */
+/*   Updated: 2024/08/14 10:15:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PHILO_H
 
 # include <stdio.h>
-# include <string.h> // for memset
-# include <stdint.h> // to store miliseconds
+# include <string.h>
+# include <stdint.h>
 # include <stdbool.h>
 # include <stdlib.h>
 # include <pthread.h>
@@ -57,22 +57,20 @@ enum e_fork
 };
 
 int			ft_atoi(const char *str);
-void		*ft_calloc(size_t count, size_t size);
 int			ft_isdigit(int c);
 bool		ft_isint(char *str);
 time_t		ft_now_ms(void);
 size_t		ft_strlen(const char *str);
-// void		ft_usleep(time_t milli);
 void		ft_usleep(time_t milli, t_philo *philo);
 bool		ft_initialize_args(t_args *args, char **argv);
 void		ft_initialize_philos(t_args *args);
 bool		ft_break_while(t_args *args, int *i);
 bool		ft_write_status(t_philo *philo, char *msg);
 bool		ft_should_stop(t_philo *philo);
-bool		ft_get_forks(t_philo *philo);
+bool		pick_forks(t_philo *philo);
 void		ft_eat(t_philo *philo);
-bool		ft_sleep_think(t_philo *philo);
+bool		sleep_then_think(t_philo *philo);
 void		ft_release_forks(t_philo *philo);
-void		*proutine(void	*data);
+void		*ph_routine(void	*data);
 
 #endif
