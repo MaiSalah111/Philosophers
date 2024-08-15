@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:21 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/14 15:23:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/15 07:39:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ size_t		ft_strlen(const char *str);
 void		ft_usleep(time_t milli, t_philo *philo);
 bool		ft_initialize_args(t_args *args, char **argv);
 void		ft_initialize_philos(t_args *args);
-bool		ft_break_while(t_args *args, int *i);
 bool		ft_write_status(t_philo *philo, char *msg);
+bool		ck_simulation_status(t_args *args, int *i);
 bool		should_stop(t_philo *philo);
 bool		pick_forks(t_philo *philo);
 void		ft_eat(t_philo *philo);
