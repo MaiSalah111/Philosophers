@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:02:48 by codespace         #+#    #+#             */
-/*   Updated: 2024/08/14 16:05:53 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/15 18:07:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_eat(t_philo *philo)
 {
 	if (!ft_write_status(philo, "is eating 🍽️ 😋"))
-		return;
+		return ;
 	pthread_mutex_lock(&philo->args->sync_mutex);
 	philo->meals_count++;
 	philo->last_meal_beginning = ft_now_ms();
@@ -47,12 +47,14 @@ void	*ph_routine(void *data)
 	philo = (t_philo *)data;
 	if (philo->args->philo_count == 1)
 	{
-		printf("%ld %d has taken a fork\n", ft_now_ms() - philo->args->start_time, philo->nbr);
+		printf("%ld %d has taken a fork\n",
+			ft_now_ms() - philo->args->start_time, philo->nbr);
 		ft_usleep(philo->args->time2die, philo);
-		printf("%ld %d died\n", ft_now_ms() - philo->args->start_time, philo->nbr);
+		printf("%ld %d died\n",
+			ft_now_ms() - philo->args->start_time, philo->nbr);
 		return (NULL);
 	}
-	if (!(philo->nbr & 1))
+	if (philo->nbr % 2 == 0)
 		ft_usleep(100, philo);
 	while (1)
 	{
@@ -64,3 +66,30 @@ void	*ph_routine(void *data)
 	}
 	return (NULL);
 }
+
+// void	*ph_routine(void *data)
+// {
+// 	t_philo	*philo;
+
+// 	philo = (t_philo *)data;
+// 	if (philo->args->philo_count == 1)
+// 	{
+// 		printf("%ld %d has taken a fork\n",
+// 			ft_now_ms() - philo->args->start_time, philo->nbr);
+// 		ft_usleep(philo->args->time2die, philo);
+// 		printf("%ld %d died\n",
+// 			ft_now_ms() - philo->args->start_time, philo->nbr);
+// 		return (NULL);
+// 	}
+// 	if (!(philo->nbr & 1))
+// 		ft_usleep(100, philo);
+// 	while (1)
+// 	{
+// 		if (!pick_forks(philo))
+// 			break ;
+// 		ft_eat(philo);
+// 		if (!sleep_then_think(philo))
+// 			break ;
+// 	}
+// 	return (NULL);
+// }

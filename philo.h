@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:44:21 by maiahmed          #+#    #+#             */
-/*   Updated: 2024/08/15 07:39:29 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/15 18:07:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 
 # define PHILO_MAX 200
+# define FALSE 0
 
 typedef struct s_philo
 {

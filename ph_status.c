@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 14:07:20 by codespace         #+#    #+#             */
-/*   Updated: 2024/08/15 08:00:33 by codespace        ###   ########.fr       */
+/*   Updated: 2024/08/15 18:07:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ bool	ft_write_status(t_philo *philo, char *msg)
 		pthread_mutex_unlock(&philo->args->sync_mutex);
 		return (false);
 	}
-	printf("%ld %d %s\n", ft_now_ms() - philo->args->start_time, philo->nbr, msg);
+	printf("%ld %d %s\n",
+		ft_now_ms() - philo->args->start_time, philo->nbr, msg);
 	pthread_mutex_unlock(&philo->args->sync_mutex);
 	return (true);
 }
